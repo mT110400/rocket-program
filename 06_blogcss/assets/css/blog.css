@@ -1,0 +1,20 @@
+a{
+    text-decoration: none;
+}
+
+p{
+    text-align: justify;
+    text-indent: 30px;
+}
+
+li {
+    padding-bottom: 8px;
+}
+
+li span {
+    display: inline-block;
+    background-color: #bbbbbb;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 8px;
+}
