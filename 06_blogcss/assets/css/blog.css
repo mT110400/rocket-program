@@ -1,20 +1,253 @@
-a{
-    text-decoration: none;
+@font-face {
+  font-family: Inter;
+  src: url("../fonts/Inter/Inter.ttf");
 }
 
-p{
-    text-align: justify;
-    text-indent: 30px;
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  padding: 132px 0 32px;
+  font-size: 1rem;
+}
+
+main {
+  padding: 132px 0 32px 200px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+ol,
+ul {
+  padding-left: 30px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  color: #0000ff;
+  text-decoration: none;
+}
+
+p {
+  text-align: justify;
+  text-indent: 30px;
+  margin-block: 16px;
 }
 
 li {
-    padding-bottom: 8px;
+  padding-bottom: 8px;
 }
 
-li span {
-    display: inline-block;
-    background-color: #bbbbbb;
-    font-size: 12px;
-    padding: 4px;
-    border-radius: 8px;
+.badge {
+  display: inline-block;
+  background-color: #bbbbbb;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+pre {
+  display: block;
+  background-color: #bbbbbb;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 8px;
+  margin: 0 16px 8px;
+}
+
+.post {
+  width: 90%;
+  margin: 0 auto;
+  background: #dddddd;
+  padding: 16px;
+  margin-bottom: 32px;
+  border: 2px solid black;
+}
+
+header#header {
+  background-color: #1865ff;
+  color: #ffffff;
+  padding: 16px 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+header p {
+  text-indent: 0;
+  margin: 0;
+}
+
+aside {
+  background-color: #739ff7;
+  color: #ffffff;
+  padding: 16px 16px 8px;
+  display: none;
+  width: 200px;
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+}
+
+aside a {
+  color: #ffffff;
+}
+
+nav {
+  height: 100%;
+}
+
+nav ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+nav ul li {
+  background-color: #739ff7;
+  flex: 1;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul a {
+  display: block;
+  opacity: 0.7;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+nav ul a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s;
+}
+nav ul a:active,
+nav ul a:hover {
+  opacity: 1;
+}
+
+nav ul a:active::before,
+nav ul a:hover::before {
+  left: 0;
+}
+
+.menu-button {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 16px;
+  right: 32px;
+  transform: translateY(-50%);
+  border: 0;
+  background: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.menu-button div {
+  height: 5px;
+  width: 32px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.menu-button div::before {
+  content: "";
+  height: 5px;
+  width: 32px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  top: -10px;
+  transition: 0.3s;
+  opacity: 1;
+}
+
+.menu-button div::after {
+  content: "";
+  height: 5px;
+  width: 32px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+.menu-button:hover div {
+  transform: rotate(-45deg);
+  opacity: 1;
+}
+
+.menu-button:hover div::before {
+  left: 0;
+  top: 0;
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.menu-button:hover div::after {
+  left: 0;
+  bottom: 0;
+  transform: rotate(-90deg);
+}
+
+@media (min-width: 600px) {
+  .menu-button {
+    display: none;
+  }
+  aside {
+    display: flex;
+  }
+  main {
+    padding: 132px 0 32px 200px;
+  }
 }
