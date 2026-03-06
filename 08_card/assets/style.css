@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: #daf8fd;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 300px;
+  border: 1px solid rgba(67, 121, 150, 0.659);
+  box-shadow: 0 15px 35px rgb(67, 121, 150)
+}
+
+.foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #437996;
+  margin-bottom: 10px;
+}
+
+.descricao {
+  color: #437996;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.links a {
+  display: block;
+  background-color: #ffffff;
+  color: #437996;
+  text-decoration: none;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: 0.3s;
+  border: 1px solid #437996;
+}
+
+.links a:hover {
+  background-color: #437996;
+  color: white;
+}
