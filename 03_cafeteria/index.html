@@ -1,121 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ponto do Café - Menu</title>
-</head>
+    <link rel="stylesheet" href="./assets/images/style.css" />
+  </head>
 
-<body>
-    <img src="./assets/images/logo.png" alt="Logo do café" width="350"/>
-
-
-
-
+  <body>
+    <img src="./assets/images/logo.png" alt="Logo do café" width="350" />
 
     <h1>PONTO DO CAFÉ</h1>
     <p>Seja bem-vindo ao Ponto do Café</p>
 
-      <h2>HORÁRIO DE FUNCIONAMENTO</h2>
+    <h2>HORÁRIO DE FUNCIONAMENTO</h2>
 
-    <table border="1" cellpadding="10">
-<thead>
-    <tr>
-        <th>Dia da semana</th>
-        <th>Horário</th>
-    </tr>
-</thead>
-
-<tbody>
-    <tr>
-        <td>Segunda-feira</td>
-        <td>08:00 - 18:00</td>
-    </tr>
-     <tr>
-        <td><strong>Terça-feira</strong></td>
-        <td><strong>Fechado</strong></td>   
-    </tr>
-     <tr>
-        <td>Quarta-feira</td>
-        <td>08:00 - 18:00</td>
-    </tr>
-     <tr>
-        <td>Quinta-feira</td>
-        <td>08:00 - 18:00</td>
-    </tr>
-     <tr>
-        <td>Sexta-feira</td>
-        <td>08:00 - 18:00</td>
-    </tr>
-     <tr>
-        <td>Sábado</td>
-        <td>08:00 - 18:00</td>
-    </tr>
-     <tr>
-        <td>Domingos e feriados</td>
-        <td>08:00 - 12:00</td>
-    </tr>
-</tbody>
+    <table class="horario">
+      <thead>
+        <tr>
+          <th>Dia da semana</th>
+          <th>Horário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Segunda-feira</td>
+          <td>08:00 - 18:00</td>
+        </tr>
+        <tr>
+          <td><strong>Terça-feira</strong></td>
+          <td><strong>Fechado</strong></td>
+        </tr>
+        <tr>
+          <td>Quarta-feira</td>
+          <td>08:00 - 18:00</td>
+        </tr>
+        <tr>
+          <td>Quinta-feira</td>
+          <td>08:00 - 18:00</td>
+        </tr>
+        <tr>
+          <td>Sexta-feira</td>
+          <td>08:00 - 18:00</td>
+        </tr>
+        <tr>
+          <td>Sábado</td>
+          <td>08:00 - 18:00</td>
+        </tr>
+        <tr>
+          <td>Domingos e feriados</td>
+          <td>08:00 - 12:00</td>
+        </tr>
+      </tbody>
     </table>
 
-    <h2><strong>BEBIDAS</strong></h2>
-    <ol>
-        <li><u><strong>Café expresso</strong></u></li>
-        <li><u><strong>Café com leite</strong></u></li>
-        <ol type="a">
-            <li>Café</li>
-            <li>Leite</li>
-        </ol>
-        <li><u><strong>Cappuccino</strong></u></li>
-        <ol type="a">
-            <li>1/3 de Café expresso</li>
-            <li>1/3 de leite vaporizado</li>
-            <li>1/3 de espuma de leite</li>
-        </ol>
-    </ol>
+    <h2>CARDÁPIO</h2>
 
-    <h2><strong>SALGADOS</strong></h2>
-    <ol>
-        <li><u><strong>Coxinha de frango com catupiry</strong></u></li>
-        <ol type="a">
-            <li>Massa cozida</li>
-            <li>Recheio de frango</li>
-            <li>Catupiry</li>
-        </ol>
-    <li><u><strong>Pastel de queijo</strong></u></li>
-        <ol type="a">
-            <li>Massa frita</li>
-            <li>Recheio de queijo</li>
-        </ol>
-        <li><u><strong>Pizza de calabresa</strong></u></li>
-        <ol type="a">
-            <li>Massa de farinha de trigo</li>
-             <li>Molho de tomate</li>
-             <li>Queijo muçarela</li>
-             <li>Calabresa fatiada</li>
-        </ol>
-    </ol>
+    <table class="menu">
+      <tr>
+        <td>
+          <h3>BEBIDAS</h3>
+          <details>
+            <summary>
+              Café expresso<br /><span class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>Café</li>
+            </ul>
+          </details>
 
-        <h2><strong>DOCES</strong></h2>
-        <ol>
-            <li><u><strong>Brigadeiro de leite ninho</strong></u></li>
-            <ol type="a">
-                <li>Leite condensado</li>
-                <li>Leite em pó</li>
-                <li>Manteiga</li>
-                <li>Creme de leite</li>
-            </ol>
-            <li><u><strong>Brownie de chocovelã com sorvete</strong></u></li>
-            <ol type="a">
-                <li>Massa de cacau</li>
-                <li>Recheio de creme de avelã</li>
-                <li>Sorvete por cima (de sua preferencia)</li>
-            </ol>
-        </ol>
-    </ol>
-    <a href="./contato-cafeteria.html">Contato</a>
-    <p>
-        <a href="../index.html">voltar ao portifolio</a> 
-    </p>
-</body>
+          <details>
+            <summary>
+              Café com leite<br /><span class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>Café</li>
+              <li>Leite</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>
+              Cappuccino<br /><span class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>1/3 Café expresso</li>
+              <li>1/3 leite vaporizado</li>
+              <li>1/3 espuma de leite</li>
+            </ul>
+          </details>
+        </td>
+
+        <td>
+          <h3>SALGADOS</h3>
+          <details>
+            <summary>
+              Coxinha de frango com catupiry<br /><span
+                class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>Massa cozida</li>
+              <li>Recheio de frango</li>
+              <li>Catupiry</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>
+              Pastel de queijo<br /><span class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>Massa frita</li>
+              <li>Recheio de queijo</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>
+              Pizza de calabresa<br /><span class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>Massa de farinha de trigo</li>
+              <li>Molho de tomate</li>
+              <li>Queijo muçarela</li>
+              <li>Calabresa fatiada</li>
+            </ul>
+          </details>
+        </td>
+
+        <td>
+          <h3>DOCES</h3>
+          <details>
+            <summary>
+              Brigadeiro de leite ninho<br /><span class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>Leite condensado</li>
+              <li>Leite em pó</li>
+              <li>Manteiga</li>
+              <li>Creme de leite</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>
+              Brownie de chocovelã com sorvete<br /><span
+                class="ingredientes-info"
+                >clique para ver os ingredientes</span
+              >
+            </summary>
+            <ul>
+              <li>Massa de cacau</li>
+              <li>Recheio de creme de avelã</li>
+              <li>Sorvete</li>
+            </ul>
+          </details>
+        </td>
+      </tr>
+    </table>
+
+    <p><a href="./contato-cafeteria.html">Contato</a></p>
+    <p><a href="../index.html">Voltar ao portfólio</a></p>
+  </body>
 </html>

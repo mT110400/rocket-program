@@ -3,48 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contato cafeteria</title>
+    <title>Contato - Ponto do Café</title>
+    <link rel="stylesheet" href="./assets/stylecontato.css" />
   </head>
 
   <body>
-    <h1>Contato cafeteria</h1>
-    <form>
-      <label for="nome">Nome</label><br />
-      <input
-        type="text"
-        id="nome"
-        name="nome"
-        placeholder="Digite seu nome"
-        required
-      /><br /><br />
+    <nav class="navbar">
+      <h2 class="logo">☕ Ponto do Café</h2>
 
-      <label for="email">E-mail</label><br />
-      <input
-        type="text"
-        id="email"
-        name="email"
-        placeholder="Digite seu e-mail"
-        required
-      /><br /><br />
-
-      <label for="telefone">Telefone</label><br>
-      <input type="text" name="telefone" id="telefone" placeholder="Digite seu número" required><br><br>
-
-      <label for="assunto">Assunto</label><br>
-      <input type="text" name="assunto" id="assunto" placeholder="Assunto" required><br><br>
-
-      <label for="mensagem">Mensagem</label><br>
-      <textarea name="mensagem" id="mensagen" placeholder="Escreva sua mensagem para nós!" required></textarea><br><br>
-
-      <input type="submit" value="Enviar">
-      
-    </form>
-    <p>
+      <div class="menu">
         <a href="./index.html">Cardápio</a>
-    </p>
-    <p>
-        <a href="../index.html">Voltar ao portifólio</a>
-    </p>
-</body>
+        <a href="../index.html">Portfólio</a>
+      </div>
+    </nav>
+
+    <section class="contato-section">
+      <h1>Contato</h1>
+
+      <form>
+        <label>Nome</label>
+        <input type="text" placeholder="Digite seu nome" />
+
+        <label>Email</label>
+        <input type="email" placeholder="Digite seu email" />
+
+        <label>Mensagem</label>
+        <textarea placeholder="Digite sua mensagem"></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
   </body>
 </html>
