@@ -13,9 +13,21 @@
 
 <body>
 
-    <a href="../index.html" class="btn-voltar">⬅ Voltar ao Portfólio</a>
+<a href="../index.html" class="btn-voltar">⬅ Voltar ao Portfólio</a>
 
 <h1>🗡️ WhateverDex - Espadas de Bleach</h1>
+
+<div class="search-box">
+
+<input 
+type="text" 
+id="searchInput" 
+placeholder="🔎 Buscar Espada..."
+oninput="searchCards()"
+class="search-input"
+>
+
+</div>
 
 <div class="dex-container">
 
@@ -400,6 +412,8 @@
 
 
 </div>
+
+<script src="./assets/script.js"></script>
 
 </body>
 </html>
