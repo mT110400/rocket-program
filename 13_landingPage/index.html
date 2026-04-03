@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-br">
+   
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Iron Fist Boxing Club</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+   
+  <body>
+    <div
+      class="alert alert-success alert-dismissible fade show mb-0 rounded-0 text-center"
+      role="alert"
+    >
+        <strong>Bem-vindo!</strong> Prepare-se para o seu melhor treino hoje.  
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary"
+    >
+       
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">IRON FIST</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+           
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#servicos">Treinos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#contato">Contato</a>
+            </li>
+
+            <li class="nav-item ms-lg-3">
+               
+              <button
+                type="button"
+                class="btn btn-outline-light position-relative btn-sm"
+              >
+                Notificações [cite: 19]
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >
+                    3+  
+                  <span class="visually-hidden">mensagens não lidas</span>    
+                </span>
+                 
+              </button>
+            </li>
+             
+          </ul>
+        </div>
+         
+      </div>
+    </nav>
+
+    <section
+      class="position-relative overflow-hidden text-white text-center py-5 bg-dark"
+    >
+       
+      <div class="position-absolute top-0 start-0 w-100 h-100 z-0">
+        <img
+          src="./assets/images/fotoo.jpg"
+          class="w-100 h-100 object-fit-cover opacity-50"
+          alt="Fundo Boxe"
+        />
+
+        <div
+          class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-25"
+        ></div>
+         
+      </div>
+
+       
+      <div class="container py-5 position-relative z-1">
+        <div class="row justify-content-center">
+           
+          <div class="col-md-8">
+            <h1 class="display-3 fw-bold">DOMINE O RINGUE</h1>
+
+            <p class="lead mb-4">
+                Treinamento de alta performance para quem busca força,
+              disciplina   e técnica.
+            </p>
+
+            <a href="#contato" class="btn btn-danger btn-lg px-5"
+              >Começar Agora</a
+            >
+             
+          </div>
+        </div>
+         
+      </div>
+    </section>
+
+    <section class="container py-5" id="servicos">
+       
+      <h2 class="text-center mb-5 fw-bold text-uppercase">Nossos Treinos</h2>
+
+       
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+           
+          <div class="card h-100 border-0 shadow-sm bg-info-subtle">
+            <div class="card-body text-center py-4">
+               
+              <div class="display-4 mb-3 text-primary">🏆</div>
+               
+              <h3 class="h5 card-title fw-bold">Boxe Recreativo</h3>
+               
+              <p class="card-text text-muted small">
+                Ideal para queimar calorias e aliviar o estresse.  
+              </p>
+            </div>
+             
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+           
+          <div class="card h-100 border-0 shadow-sm bg-light text-dark">
+            <div class="card-body text-center py-4">
+               
+              <div class="display-4 mb-3 text-dark">🥊</div>
+               
+              <h3 class="h5 card-title fw-bold">Boxe de Elite</h3>
+               
+              <p class="card-text text-muted small">
+                Foco em sparring e preparação para competições.  
+              </p>
+            </div>
+             
+          </div>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-4">
+           
+          <div class="card h-100 border-0 shadow-sm bg-danger-subtle">
+            <div class="card-body text-center py-4">
+               
+              <div class="display-4 mb-3 text-danger">🔥</div>
+               
+              <h3 class="h5 card-title fw-bold">Muay Thai</h3>
+               
+              <p class="card-text text-muted small">
+                A arte das 8 armas para condicionamento extremo.  
+              </p>
+            </div>
+             
+          </div>
+        </div>
+         
+      </div>
+    </section>
+
+    <section class="bg-light py-5" id="contato">
+       
+      <div class="container">
+        <div class="row justify-content-center">
+           
+          <div class="col-md-6">
+            <div class="card shadow p-4 border-0">
+               
+              <h3 class="text-center mb-4 text-uppercase fw-bold">
+                Agende sua Aula  
+              </h3>
+               
+              <form id="formulario">
+                <div class="mb-3 form-group">
+                   
+                  <label class="form-label fw-semibold">Nome Completo</label>  
+
+                  <input
+                    type="text"
+                    id="nome"
+                    class="form-control"
+                    placeholder="Seu nome"
+                  />
+                   
+                  <div class="invalid-feedback">O nome é obrigatório.</div>
+                </div>
+
+                <div class="mb-3 form-group">
+                   
+                  <label class="form-label fw-semibold">E-mail</label>  
+
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="exemplo@boxe.com"
+                  />
+                   
+                  <div class="invalid-feedback">Insira um e-mail válido.</div>
+                </div>
+
+                <div class="mb-3 form-group">
+                   
+                  <label class="form-label fw-semibold"
+                    >Interesse Principal</label
+                  >
+                   
+                  <select id="assunto" class="form-select">
+                    <option value="">Selecione um plano...</option>
+
+                    <option>Individual</option>
+
+                    <option>Grupo</option>
+                     
+                  </select>
+                   
+                  <div class="invalid-feedback">Selecione uma opção.</div>
+                </div>
+
+                <div class="mb-3 form-group">
+                   
+                  <label class="form-label fw-semibold">Mensagem</label>
+                   
+                  <textarea
+                    id="mensagem"
+                    class="form-control"
+                    rows="3"
+                  ></textarea>
+                   
+                  <div class="invalid-feedback">A mensagem é obrigatória.</div>
+                </div>
+
+                <div class="form-check mb-4">
+                   
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="check"
+                    required
+                  />
+                   
+                  <label class="form-check-label text-muted"
+                    >Aceito os termos</label
+                  >
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary w-100 py-2 fw-bold"
+                >
+                    ENVIAR INSCRIÇÃO
+                </button>
+
+                <div id="sucesso" class="alert alert-success mt-3 d-none">
+                    🥊 Enviado com sucesso!
+                </div>
+                 
+              </form>
+            </div>
+             
+          </div>
+        </div>
+         
+      </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+       
+      <div class="container text-center">
+        <p class="mb-0 small">© 2026 Iron Fist Boxing Club</p>
+         
+      </div>
+    </footer>
+
+    <script>
+      const form = document.getElementById("formulario");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let valido = true;
+        const campos = [
+          document.getElementById("nome"),
+          document.getElementById("email"),
+          document.getElementById("assunto"),
+          document.getElementById("mensagem"),
+        ];
+
+        campos.forEach((c) => {
+          c.classList.remove("is-valid", "is-invalid");
+          if (
+            c.value.trim() === "" ||
+            (c.type === "email" && !c.value.includes("@"))
+          ) {
+            c.classList.add("is-invalid");
+            valido = false;
+          } else {
+            c.classList.add("is-valid");
+          }
+        });
+
+        if (valido) {
+          document.getElementById("sucesso").classList.remove("d-none");
+          form.reset();
+          setTimeout(() => {
+            document.getElementById("sucesso").classList.add("d-none");
+          }, 4000);
+        }
+      });
+    </script>
+     
+  </body>
+</html>
