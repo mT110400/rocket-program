@@ -166,7 +166,3 @@ p {
     grid-template-columns: 1fr;
   }
 }
-.links a {
-  display: block;
-  margin-bottom: 0.5rem;
-}

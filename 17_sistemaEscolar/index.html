@@ -1,22 +1,90 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
-    <link rel="stylesheet" href="./assets/sttyle.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escola — Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/login.css" />
   </head>
-
   <body>
-    <h2>Login</h2>
+    <div class="left">
+      <div class="logo">Escola<span>Net</span></div>
 
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="senha" placeholder="Senha" />
+      <div class="hero-text">
+        <h1>Bem-vindo<br />de <em>volta.</em></h1>
+        <p>
+          Acesse seu perfil, acompanhe suas atividades e continue sua jornada de
+          aprendizado.
+        </p>
+      </div>
 
-    <button onclick="login()">Entrar</button>
+      <div class="badge-row">
+        <span class="badge">Alunos</span>
+        <span class="badge">Professores</span>
+        <span class="badge">Turmas</span>
+        <span class="badge">Matérias</span>
+      </div>
+    </div>
 
-    <p id="erro" style="color: red"></p>
+    <div class="right">
+      <div class="form-card">
+        <h2>Entrar</h2>
+        <p class="subtitle">Insira suas credenciais para acessar seu perfil.</p>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="seu@escola.com" />
+        </div>
+
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" placeholder="••••••••" />
+          <div class="error-msg" id="erro">
+            E-mail ou senha inválidos. Tente novamente.
+          </div>
+        </div>
+
+        <button class="btn-login" onclick="realizarLogin()">Entrar →</button>
+
+        <div class="hint">
+          <strong>Contas de teste:</strong><br />
+          mateus@escola.com / senha123 (Aluno)<br />
+          ana@escola.com / prof456 (Professora)
+        </div>
+      </div>
+    </div>
 
     <script src="./assets/usuario.js"></script>
-    <script src="./assets/script.js"></script>
+    <script src="./assets/login.js"></script>
+    <script>
+      const sistema = new SistemaLogin();
+
+      function realizarLogin() {
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value;
+        const erro = document.getElementById("erro");
+
+        const usuario = sistema.autenticar(email, senha);
+
+        if (usuario) {
+          erro.classList.remove("show");
+          sistema.salvarSessao(usuario);
+          window.location.href = "perfil.html";
+        } else {
+          erro.classList.add("show");
+          document.getElementById("senha").value = "";
+          document.getElementById("senha").focus();
+        }
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") realizarLogin();
+      });
+    </script>
   </body>
 </html>

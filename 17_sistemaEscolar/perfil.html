@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escola — Perfil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/perfil.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Escola<span>Net</span></div>
+      <button class="btn-logout" onclick="sair()">Sair →</button>
+    </header>
+
+    <main>
+      <div class="perfil-wrapper" id="perfil-wrapper"></div>
+    </main>
+
+    <script src="./assets/usuario.js"></script>
+    <script src="./assets/login.js"></script>
+    <script>
+      const dados = SistemaLogin.recuperarSessao();
+
+      if (!dados) {
+        window.location.href = "index.html";
+      } else {
+        renderizarPerfil(dados);
+      }
+
+      function renderizarPerfil(u) {
+        const inicial = u.nome.charAt(0).toUpperCase();
+        const tipo = u.tipo.toLowerCase();
+        const wrapper = document.getElementById("perfil-wrapper");
+
+        let linhaExtra = "";
+        if (tipo === "aluno" && u.turma) {
+          linhaExtra = `
+          <div class="row">
+            <span class="row-label">Turma</span>
+            <span class="row-value">${u.turma}</span>
+          </div>`;
+        } else if (tipo === "professor" && u.materias) {
+          const tags = u.materias
+            .map((m) => `<span class="materia-tag">${m}</span>`)
+            .join("");
+          linhaExtra = `
+          <div class="row">
+            <span class="row-label">Matérias</span>
+            <span class="row-value"><div class="materias-list">${tags}</div></span>
+          </div>`;
+        }
+
+        const consoleTxt = gerarConsoleTexto(u);
+
+        wrapper.innerHTML = `
+        <div class="avatar-area">
+          <div class="avatar ${tipo}">${inicial}</div>
+          <div class="avatar-info">
+            <h2>${u.nome}</h2>
+            <span class="tipo-badge ${tipo}">${u.tipo}</span>
+          </div>
+        </div>
+
+        <div class="dados-card">
+          <div class="row">
+            <span class="row-label">Nome</span>
+            <span class="row-value">${u.nome}</span>
+          </div>
+          <div class="row">
+            <span class="row-label">E-mail</span>
+            <span class="row-value">${u.email}</span>
+          </div>
+          ${linhaExtra}
+        </div>
+
+      `;
+      }
+
+      function gerarConsoleTexto(u) {
+        const tipo = u.tipo.toLowerCase();
+        if (tipo === "aluno") {
+          return `> aluno.exibirPerfil()\n  Nome:  ${u.nome}\n  Email: ${u.email}\n  Turma: ${u.turma}`;
+        } else {
+          const mats = u.materias ? u.materias.join(", ") : "";
+          return `> professor.exibirPerfil()\n  Nome:     ${u.nome}\n  Email:    ${u.email}\n  Matérias: ${mats}`;
+        }
+      }
+
+      function sair() {
+        SistemaLogin.encerrarSessao();
+        window.location.href = "index.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #07090f;
+  --surface: #0e1018;
+  --surface2: #13161f;
+  --border: #1a1e2e;
+
+  --text: #dde1f0;
+  --muted: #4a5070;
+
+  --aluno: #38bdf8;
+  --aluno-dim: rgba(56, 189, 248, 0.1);
+
+  --prof: #fb923c;
+  --prof-dim: rgba(251, 146, 60, 0.1);
+
+  --white: #ffffff;
+  --radius: 14px;
+}
+
+body {
+  font-family: "Epilogue", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  color: var(--aluno);
+}
+
+.logo span {
+  color: var(--white);
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  border-color: var(--aluno);
+  color: var(--aluno);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.perfil-wrapper {
+  max-width: 520px;
+  width: 100%;
+  animation: fadeUp 0.5s ease both;
+}
+
+.avatar-area {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Syne";
+  font-weight: 800;
+}
+
+.avatar.aluno {
+  background: var(--aluno-dim);
+  color: var(--aluno);
+}
+
+.avatar.professor {
+  background: var(--prof-dim);
+  color: var(--prof);
+}
+
+.avatar-info h2 {
+  font-family: "Syne";
+  font-size: 1.4rem;
+}
+
+.tipo-badge {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.tipo-badge.aluno {
+  background: var(--aluno-dim);
+  color: var(--aluno);
+}
+
+.tipo-badge.professor {
+  background: var(--prof-dim);
+  color: var(--prof);
+}
+
+.dados-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.row {
+  display: flex;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row-label {
+  width: 90px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.row-value {
+  font-size: 0.9rem;
+}
+
+.materia-tag {
+  background: var(--prof-dim);
+  color: var(--prof);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.console-box {
+  margin-top: 20px;
+  background: #0a0a0e;
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 10px;
+  font-family: monospace;
+  color: var(--aluno);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
