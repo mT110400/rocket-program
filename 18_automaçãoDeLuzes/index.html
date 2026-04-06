@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Automação de Luzes</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+
+  <body>
+    <h1>💡 Automação de Luzes</h1>
+
+    <p id="status">Clique em um botão</p>
+
+    <!-- CASA -->
+    <div class="casa">
+      <div class="comodo" data-comodo="quarto">
+        <p>Quarto</p>
+      </div>
+
+      <div class="comodo" data-comodo="sala">
+        <p>Sala</p>
+      </div>
+
+      <div class="comodo" data-comodo="cozinha">
+        <p>Cozinha</p>
+      </div>
+
+      <div class="comodo" data-comodo="banheiro">
+        <p>Banheiro</p>
+      </div>
+    </div>
+
+    <!-- CONTROLES (mantém requisito dos botões) -->
+    <div class="controles">
+      <button data-comodo="quarto" data-acao="ligar">Quarto ON</button>
+      <button data-comodo="quarto" data-acao="desligar">Quarto OFF</button>
+
+      <button data-comodo="sala" data-acao="ligar">Sala ON</button>
+      <button data-comodo="sala" data-acao="desligar">Sala OFF</button>
+
+      <button data-comodo="cozinha" data-acao="ligar">Cozinha ON</button>
+      <button data-comodo="cozinha" data-acao="desligar">Cozinha OFF</button>
+
+      <button data-comodo="banheiro" data-acao="ligar">Banheiro ON</button>
+      <button data-comodo="banheiro" data-acao="desligar">Banheiro OFF</button>
+    </div>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validador de Dados</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Epilogue:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <h1>Validador<br />de <em>Dados</em></h1>
+      </header>
+
+      <form id="form" novalidate>
+        <div class="field" id="field-nome">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Somente letras e espaços…"
+            autocomplete="off"
+          />
+          <span class="feedback" id="feedback-nome"></span>
+        </div>
+
+        <div class="field" id="field-email">
+          <label for="email">E-mail</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="exemplo@dominio.com"
+            autocomplete="off"
+          />
+          <span class="feedback" id="feedback-email"></span>
+        </div>
+
+        <div class="field" id="field-cpf">
+          <label for="cpf">CPF</label>
+          <input
+            type="text"
+            id="cpf"
+            name="cpf"
+            placeholder="000.000.000-00"
+            maxlength="14"
+            autocomplete="off"
+          />
+          <span class="feedback" id="feedback-cpf"></span>
+        </div>
+
+        <button type="submit" id="btn-submit">Validar</button>
+
+        <div class="form-result" id="form-result"></div>
+      </form>
+    </div>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>

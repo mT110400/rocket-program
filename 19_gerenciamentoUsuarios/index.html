@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR" ng-app="escolaApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuários — Desafio 7</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Epilogue:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body ng-controller="AppController">
+    <div class="page">
+      <header class="site-header">
+        <h1>Cadastro de<br /><em>Usuários</em></h1>
+      </header>
+
+      <div class="counters">
+        <div class="counter-card aluno">
+          <span class="counter-num"
+            >{{ (usuarios | filter:{tipo:'Aluno'}).length }}</span
+          >
+          <span class="counter-lbl">Alunos</span>
+        </div>
+        <div class="counter-card total">
+          <span class="counter-num">{{ usuarios.length }}</span>
+          <span class="counter-lbl">Total</span>
+        </div>
+        <div class="counter-card professor">
+          <span class="counter-num"
+            >{{ (usuarios | filter:{tipo:'Professor'}).length }}</span
+          >
+          <span class="counter-lbl">Professores</span>
+        </div>
+      </div>
+
+      <div class="form-card" ng-controller="FormController">
+        <div class="form-header">
+          <span class="form-icon">📝</span>
+          <span>Novo usuário</span>
+        </div>
+
+        <div class="success-banner" ng-show="sucesso">
+          <span>✅</span> Usuário cadastrado com sucesso!
+        </div>
+
+        <form name="cadastroForm" novalidate ng-submit="salvar(cadastroForm)">
+          <div class="field">
+            <label>Nome</label>
+            <input
+              type="text"
+              name="nome"
+              ng-model="novoUsuario.nome"
+              placeholder="Nome completo…"
+              class="text-input"
+              ng-class="{'input-error': cadastroForm.nome.$invalid && cadastroForm.nome.$touched}"
+              required
+            />
+            <span
+              class="field-error"
+              ng-show="cadastroForm.nome.$error.required && cadastroForm.nome.$touched"
+            >
+              Nome é obrigatório.
+            </span>
+          </div>
+
+          <div class="field">
+            <label>E-mail</label>
+            <input
+              type="email"
+              name="email"
+              ng-model="novoUsuario.email"
+              placeholder="email@exemplo.com"
+              class="text-input"
+              ng-class="{'input-error': cadastroForm.email.$invalid && cadastroForm.email.$touched}"
+              required
+            />
+            <span
+              class="field-error"
+              ng-show="cadastroForm.email.$error.required && cadastroForm.email.$touched"
+            >
+              E-mail é obrigatório.
+            </span>
+            <span
+              class="field-error"
+              ng-show="cadastroForm.email.$error.email && cadastroForm.email.$touched"
+            >
+              Insira um e-mail válido.
+            </span>
+          </div>
+
+          <div class="field">
+            <label>Tipo</label>
+            <div class="select-wrap">
+              <select
+                name="tipo"
+                ng-model="novoUsuario.tipo"
+                class="select-input"
+                ng-class="{'input-error': cadastroForm.tipo.$invalid && cadastroForm.tipo.$touched}"
+                required
+              >
+                <option value="">Selecione…</option>
+                <option value="Aluno">🎓 Aluno</option>
+                <option value="Professor">📋 Professor</option>
+              </select>
+            </div>
+            <span
+              class="field-error"
+              ng-show="cadastroForm.tipo.$error.required && cadastroForm.tipo.$touched"
+            >
+              Selecione um tipo.
+            </span>
+          </div>
+
+          <button type="submit" class="btn-submit" ng-disabled="salvando">
+            <span class="spinner" ng-show="salvando"></span>
+            <span ng-show="salvando">Salvando…</span>
+            <span ng-show="!salvando">Cadastrar usuário</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="list-section" ng-controller="ListaController">
+        <div class="list-header-row">
+          <span class="list-title">Usuários cadastrados</span>
+          <div class="filter-field">
+            <span>🔍</span>
+            <input
+              type="text"
+              ng-model="filtro"
+              placeholder="Buscar…"
+              class="filter-input"
+            />
+          </div>
+          <div class="tipo-btns">
+            <button
+              class="tipo-btn"
+              ng-class="{'active':filtroTipo===''}"
+              ng-click="filtroTipo=''"
+            >
+              Todos
+            </button>
+            <button
+              class="tipo-btn"
+              ng-class="{'active-aluno':filtroTipo==='Aluno'}"
+              ng-click="filtroTipo='Aluno'"
+            >
+              🎓
+            </button>
+            <button
+              class="tipo-btn"
+              ng-class="{'active-prof':filtroTipo==='Professor'}"
+              ng-click="filtroTipo='Professor'"
+            >
+              📋
+            </button>
+          </div>
+        </div>
+
+        <ul class="user-list">
+          <li
+            class="user-card"
+            ng-repeat="u in usuarios | filter:filtro | filter:{tipo:filtroTipo}"
+            ng-class="u.tipo === 'Aluno' ? 'card-aluno' : 'card-prof'"
+          >
+            <div
+              class="user-avatar"
+              ng-class="u.tipo==='Aluno' ? 'av-aluno' : 'av-prof'"
+            >
+              {{ u.nome.charAt(0) }}
+            </div>
+
+            <div class="user-info">
+              <div class="user-name">{{ u.nome | uppercase }}</div>
+              <div class="user-meta">
+                <span
+                  class="badge"
+                  ng-class="u.tipo==='Aluno' ? 'badge-aluno' : 'badge-prof'"
+                  >{{ u.tipo }}</span
+                >
+                <span class="user-email">{{ u.email }}</span>
+                <span class="user-date"
+                  >📅 {{ u.dataCadastro | date:'dd/MM/yyyy' }}</span
+                >
+              </div>
+            </div>
+
+            <button
+              class="btn-remove"
+              ng-click="remover($index)"
+              title="Remover"
+            >
+              ✕
+            </button>
+          </li>
+        </ul>
+
+        <div
+          class="empty-state"
+          ng-if="(usuarios | filter:filtro | filter:{tipo:filtroTipo}).length === 0"
+        >
+          <span>😕</span>
+          <p>Nenhum usuário encontrado.</p>
+        </div>
+
+        <div class="list-footer">
+          Exibindo
+          <strong
+            >{{ (usuarios | filter:filtro | filter:{tipo:filtroTipo}).length
+            }}</strong
+          >
+          de <strong>{{ usuarios.length }}</strong> usuários
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/app.js"></script>
+  </body>
+</html>
