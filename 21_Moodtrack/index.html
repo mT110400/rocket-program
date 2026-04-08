@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR" ng-app="moodTrackApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoodTrack</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body ng-controller="MoodTrackCtrl">
+    <header class="app-header">
+      <div class="logo">🌱</div>
+      <div>
+        <h1>Desafio da Cintia</h1>
+        <p class="subtitle">Diário de hábitos e emoções</p>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <button ng-class="{active: tab==='register'}" ng-click="tab='register'">
+        Registrar
+      </button>
+      <button ng-class="{active: tab==='records'}" ng-click="tab='records'">
+        Registros
+      </button>
+      <button ng-class="{active: tab==='dashboard'}" ng-click="tab='dashboard'">
+        Dashboard
+      </button>
+    </nav>
+
+    <div class="container" ng-if="tab==='register'">
+      <div class="card">
+        <h2>Como você está hoje?</h2>
+
+        <div class="form-group">
+          <label>Data</label>
+          <input type="date" ng-model="form.date" />
+        </div>
+
+        <div class="form-group">
+          <label>Nível de humor</label>
+          <div class="mood-selector">
+            <div
+              class="mood-opt"
+              ng-repeat="m in moodLevels"
+              ng-class="{selected: form.mood === m.value}"
+              ng-click="form.mood = m.value"
+            >
+              <span class="emoji">{{m.emoji}}</span>
+              <span class="mood-level">{{m.value}} – {{m.label}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Observação (opcional)</label>
+          <textarea
+            ng-model="form.obs"
+            placeholder="Como foi seu dia? O que te marcou?"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Hábitos do dia</h2>
+
+        <div class="new-habit-row">
+          <input
+            type="text"
+            ng-model="newHabitName"
+            placeholder="Adicionar hábito personalizado..."
+            ng-keyup="$event.key==='Enter' && addCustomHabit()"
+          />
+          <button class="btn" ng-click="addCustomHabit()">+ Adicionar</button>
+        </div>
+
+        <div class="habits-grid">
+          <div
+            class="habit-item"
+            ng-repeat="h in form.habits"
+            ng-class="{done: h.done}"
+            ng-click="h.done = !h.done"
+          >
+            <span class="habit-icon">{{h.icon}}</span>
+            <span class="habit-name">{{h.name}}</span>
+            <span class="habit-status" ng-if="h.done">✓ Concluído</span>
+            <span class="habit-status" ng-if="!h.done">Não concluído</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions-row">
+        <button class="btn" ng-click="resetForm()">Limpar</button>
+        <button class="btn btn-primary" ng-click="saveRecord()">
+          Salvar registro
+        </button>
+      </div>
+    </div>
+
+    <div class="container" ng-if="tab==='records'">
+      <div class="card">
+        <h3>Filtros</h3>
+        <div class="filters-row">
+          <div class="form-group">
+            <label>Data</label>
+            <input type="date" ng-model="filter.date" />
+          </div>
+          <div class="form-group">
+            <label>Nível de humor</label>
+            <select ng-model="filter.mood">
+              <option value="">Todos</option>
+              <option ng-repeat="m in moodLevels" value="{{m.value}}">
+                {{m.emoji}} {{m.label}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="filters-actions">
+          <button class="btn" ng-click="clearFilters()">Limpar filtros</button>
+          <span class="filter-count"
+            >{{filteredRecords().length}} registro(s)</span
+          >
+        </div>
+      </div>
+
+      <div class="records-list" ng-if="filteredRecords().length > 0">
+        <div
+          class="record-card"
+          ng-repeat="r in filteredRecords() | orderBy:'-date'"
+        >
+          <div class="record-header">
+            <span class="record-emoji">{{getMoodEmoji(r.mood)}}</span>
+            <div class="record-meta">
+              <div class="record-mood-label">{{getMoodLabel(r.mood)}}</div>
+              <div class="record-date">{{r.date | date:'dd/MM/yyyy'}}</div>
+            </div>
+            <button class="delete-btn" ng-click="deleteRecord(r)">
+              excluir
+            </button>
+          </div>
+          <p class="record-obs" ng-if="r.obs">"{{r.obs}}"</p>
+          <div class="section-sep"></div>
+          <p class="habits-title">Hábitos</p>
+          <div class="habits-tags">
+            <span
+              ng-repeat="h in r.habits"
+              class="habit-tag"
+              ng-class="{'not-done': !h.done}"
+            >
+              {{h.icon}} {{h.name}} <span ng-if="h.done">✓</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty-state" ng-if="filteredRecords().length === 0">
+        <div class="empty-icon">📭</div>
+        <p class="empty-title">Nenhum registro encontrado</p>
+        <p class="empty-sub">
+          Tente outros filtros ou adicione um novo registro.
+        </p>
+      </div>
+    </div>
+
+    <div class="container" ng-if="tab==='dashboard'">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">{{records.length}}</div>
+          <div class="stat-label">Registros totais</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">{{avgMood()}}</div>
+          <div class="stat-label">Humor médio</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">{{getMoodEmoji(bestMood())}}</div>
+          <div class="stat-label">Humor mais frequente</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">{{topHabit().icon || '—'}}</div>
+          <div class="stat-label">{{topHabit().name || 'Hábito top'}}</div>
+        </div>
+      </div>
+
+      <div class="card" ng-if="records.length > 0">
+        <h2>Distribuição de humor</h2>
+        <div class="mood-bar-row" ng-repeat="m in moodLevels">
+          <div class="mood-bar-label">{{m.emoji}} {{m.label}}</div>
+          <div class="mood-bar-track">
+            <div
+              class="mood-bar-fill"
+              ng-style="{'width': moodPercent(m.value)+'%', 'background': m.color}"
+            ></div>
+          </div>
+          <div class="mood-bar-count">{{moodCount(m.value)}}</div>
+        </div>
+      </div>
+
+      <div class="card" ng-if="records.length > 0">
+        <h2>Taxa de conclusão por hábito</h2>
+        <div class="habit-stat-row" ng-repeat="h in habitStats()">
+          <div class="habit-stat-info">
+            <span>{{h.icon}} {{h.name}}</span>
+            <span class="habit-stat-pct">{{h.pct}}%</span>
+          </div>
+          <div class="mood-bar-track">
+            <div
+              class="mood-bar-fill"
+              ng-style="{'width': h.pct+'%', 'background': '#7F77DD'}"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty-state" ng-if="records.length === 0">
+        <div class="empty-icon">📊</div>
+        <p class="empty-title">Nenhum dado ainda</p>
+        <p class="empty-sub">
+          Faça seu primeiro registro para ver o dashboard.
+        </p>
+      </div>
+    </div>
+
+    <div class="success-toast" ng-class="{show: toast}">
+      ✓ Registro salvo com sucesso!
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>
